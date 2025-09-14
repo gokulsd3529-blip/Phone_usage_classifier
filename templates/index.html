@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Phone Usage Classifier</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; }
+    .container { max-width: 500px; margin: 40px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0px 0px 10px #ccc; }
+    h2 { text-align: center; }
+    input { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 6px; }
+    button { width: 100%; padding: 12px; background: teal; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background: darkcyan; }
+    .result { margin-top: 15px; padding: 10px; text-align: center; background: #e6fffa; border: 1px solid teal; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📱 Phone Usage Classifier</h2>
+    <form action="/predict" method="post">
+      <label>Screen Time (hours per day)</label>
+      <input type="number" step="0.1" name="screen_time" required>
+
+      <label>Calls per Day</label>
+      <input type="number" name="calls" required>
+
+      <label>Messages per Day</label>
+      <input type="number" name="messages" required>
+
+      <label>Social Media Time (hours per day)</label>
+      <input type="number" step="0.1" name="social_time" required>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+      <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
